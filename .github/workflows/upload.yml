@@ -27,7 +27,7 @@ jobs:
         run: |
           for url in $DOWNLOAD_URLS; do
             filename=$(basename $url)
-            wget $url -O $filename
+            wget -q $url -O $filename
           done
 
       - name: List files
