@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOWNLOAD_URLS: |
-        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.1.zip
-  #      https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.2.zip
+  #      https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.1.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.2.zip
   #      https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/TRONG.TRUONG.to.1.part.1.zip
   #      https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/TRONG.TRUONG.to.1.part.2.zip
   #      https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/12A3.May.Tuan.1.zip
@@ -40,8 +40,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: |
-            ./CONCEPT.to.1.part.1.zip
-#            ./CONCEPT.to.1.part.2.zip
+#            ./CONCEPT.to.1.part.1.zip
+            ./CONCEPT.to.1.part.2.zip
 #            ./TRONG.TRUONG.to.1.part.1.zip
 #            ./TRONG.TRUONG.to.1.part.2.zip
 #            ./12A3.May.Tuan.1.zip
