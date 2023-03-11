@@ -1,0 +1,58 @@
+name: Download and Release Workflow
+
+on:
+  push:
+    branches:
+      - main
+permissions: write-all
+
+jobs:
+  download-and-release:
+    runs-on: ubuntu-latest
+    env:
+      DOWNLOAD_URLS: |
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.1.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/CONCEPT.to.1.part.2.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/TRONG.TRUONG.to.1.part.1.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/TRONG.TRUONG.to.1.part.2.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/12A3.May.Tuan.1.zip
+        https://root.kevinnitro.workers.dev/5:/K%E1%BB%88%20Y%E1%BA%BEU%2012A3%2020-23/File%20n%C3%A9n%20ZIP%20chia%20%3C2GB/12A3%20May%20Tuan%202.zip
+        https://root.kevinnitro.workers.dev/5:/K%E1%BB%88%20Y%E1%BA%BEU%2012A3%2020-23/File%20n%C3%A9n%20ZIP%20chia%20%3C2GB/12A3%20May%20Tuan%203.zip
+        https://root.kevinnitro.workers.dev/5:/K%E1%BB%88%20Y%E1%BA%BEU%2012A3%2020-23/File%20n%C3%A9n%20ZIP%20chia%20%3C2GB/12A3%20May%20Diep%201.zip
+        https://root.kevinnitro.workers.dev/5:/K%E1%BB%88%20Y%E1%BA%BEU%2012A3%2020-23/File%20n%C3%A9n%20ZIP%20chia%20%3C2GB/12A3%20May%20Diep%202.zip
+        https://root.kevinnitro.workers.dev/5:/K%E1%BB%88%20Y%E1%BA%BEU%2012A3%2020-23/File%20n%C3%A9n%20ZIP%20chia%20%3C2GB/12A3%20May%20Diep%203.zip
+        https://github.com/KevinNitroG/Public-Archive-Files/releases/download/K%E1%BB%89-y%E1%BA%BFu-12A3-20-23/12A3.may.Phuc.zip
+    steps:
+      - name: Download files
+        run: |
+          for url in $DOWNLOAD_URLS; do
+            filename=$(basename $url)
+            wget $url -O $filename
+          done
+
+      - name: List files
+        run: ls -a
+
+      - name: Upload files
+        uses: svenstaro/upload-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: |
+            ./CONCEPT.to.1.part.1.zip
+            ./CONCEPT.to.1.part.2.zip
+            ./TRONG.TRUONG.to.1.part.1.zip
+            ./TRONG.TRUONG.to.1.part.2.zip
+            ./12A3.May.Tuan.1.zip
+            ./12A3%20May%20Tuan%202.zip
+            ./12A3%20May%20Tuan%203.zip
+            ./12A3%20May%20Diep%201.zip
+            ./12A3%20May%20Diep%202.zip
+            ./12A3%20May%20Diep%203.zip
+            ./12A3.may.Phuc.zip
+          overwrite: false
+          tag: ki-yeu
+          release_name: Kỉ yếu 12A3 20-23
+  
+          
